@@ -11,6 +11,9 @@ services:
       - POSTGRES_PASSWORD=postgres
   web:
     build: .
+    # python manage.py runserver, means to start our development server.
+    # 0.0.0.0 means to make it available on (all network adapters?) on our localmachine.
+    # 8000 means to make it accessible on port 8000.
     command: python manage.py runserver 0.0.0.0:8000
     volumes:
       - .:/code
