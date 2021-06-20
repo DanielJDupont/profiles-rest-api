@@ -7,10 +7,12 @@ from django.contrib.auth.models import BaseUserManager
 # Let's create our first models for our project.
 # Note that a superuser has access to every model/table in the database in our django admin.
 
+
 class UserProfileManager(BaseUserManager):
-    '''Manager for user profiles.'''
+    """Manager for user profiles."""
+
     def create_user(self, email, name, password=None):
-        '''Create a new user profile.'''
+        """Create a new user profile."""
         if not email:
             raise ValueError("Users must have a valid email address.")
 
@@ -33,12 +35,16 @@ class UserProfileManager(BaseUserManager):
         # Self is passed in for any class functions automatically.
         user = self.create_user(email, name, password)
 
+        user.is_superuser = True
+        user.is_staff = True
+        user.save(using=self._db)
 
-
+        return user
 
 
 class UserProfile(AbstractBaseUser, PermissionsMixing):
     """Database model for users in the system."""
+
     # All email fields must have a max_length specified.
     email = models.EmailField(max_length=255, unique=True)
     name = models.CharField(max_length=255)
@@ -49,8 +55,8 @@ class UserProfile(AbstractBaseUser, PermissionsMixing):
     # We need to tell django how to create new users.
     objects = UserProfileManager()
 
-    USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['name']
+    USERNAME_FIELD = "email"
+    REQUIRED_FIELDS = ["name"]
 
     def get_full_name(self):
         """Retrieve full name of user."""
