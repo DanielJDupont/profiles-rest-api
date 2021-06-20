@@ -29,7 +29,7 @@ ALLOWED_HOSTS = []
 
 
 # Application definition
-
+# All of our django apps, with the standard built in ones and the ones we created, they have to be manually specified for installation.
 INSTALLED_APPS = [
     "django.contrib.admin",
     "django.contrib.auth",
