@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    # We need to do this to install our custom app to our framework.
+    "profiles_app",
 ]
 
 MIDDLEWARE = [
@@ -75,8 +77,12 @@ WSGI_APPLICATION = "project.wsgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+        "ENGINE": "django.db.backends.mysql",
+        "NAME": "profiles_app_db",
+        "USER": "root",
+        "PASSWORD": "root",
+        # The name of the container/service itself is the host.
+        "HOST": "db",
     }
 }
 
@@ -127,4 +133,4 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 # Set the model you want as the default.
 # Look at the app, use this model for all of our authentication and user registration for our app.
 
-AUTH_USER_MODEL = "profiles_api.UserProfile"
+AUTH_USER_MODEL = "profiles_app.UserProfile"

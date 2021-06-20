@@ -1,6 +1,6 @@
 version: "3.8"
 services:
-  backend:
+  profiles_app:
     build: .
     # This means that if we make a change to our one app, it will be mapped to our entire docker container.
     volumes:
@@ -8,3 +8,19 @@ services:
     # The second one is the docker port from 0.0.0.0, the first port is our localhost port for 127.0.0.1 or localhost.
     ports:
       - 8000:8000
+    depends_on:
+      - db
+
+  # This db container must be started first prior to starting the profiles_app container.
+  db:
+    image: mysql:5.7.22
+    restart: always
+    environment:
+      MYSQL_DATABASE: profiles_app_db
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - .dbdata:/var/lib/mysql
+    ports:
+      - 33067:3306

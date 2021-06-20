@@ -42,7 +42,7 @@ class UserProfileManager(BaseUserManager):
         return user
 
 
-class UserProfile(AbstractBaseUser, PermissionsMixing):
+class UserProfile(AbstractBaseUser, PermissionsMixin):
     """Database model for users in the system."""
 
     # All email fields must have a max_length specified.

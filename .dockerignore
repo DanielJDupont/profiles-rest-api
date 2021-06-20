@@ -1,0 +1,2 @@
+# Ignoring the databases seems to resolve my permissions issues.
+.dbdata
