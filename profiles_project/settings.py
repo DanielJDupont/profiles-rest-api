@@ -80,8 +80,12 @@ WSGI_APPLICATION = "profiles_project.wsgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": BASE_DIR / "db.postgresql",
+        "USER": "databaseuser",
+        "PASSWORD": "mypassword",
+        "HOST": "127.0.0.1",
+        "PORT": "5432",
     }
 }
 
@@ -128,3 +132,17 @@ STATIC_URL = "/static/"
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+# Override the default user for authentication with django with the new model.
+AUTH_USER_MODEL = "profiles_api.UserProfile"
+
+"""
+Django has a migration file to make the database match the standard models.
+Anytime you change stuff, you make a migration file.
+A migration file contains all of the steps to change the standard model.
+Django uses migrations.
+
+Django has a command line tool.
+python manage.py makemigrations <NAME_OF_APP>
+python manage.py makemigrations profiles_api
+"""

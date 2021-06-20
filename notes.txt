@@ -1,0 +1,12 @@
+Each model in django maps to a specific table in our database.
+Django handles the entire relationship between our models and our database for us,
+so we do not have to write SQL (sequel) statements directly.
+Let's get started and create our first models for our project.
+
+We have the user profile model.
+We have a default user profile model that django provides.
+We want to change the Django default model to use an email and not a username.
+
+The project directory just contains configuration for our entire application.
+Each app will have their own model.
+The project directory does not contain models.
