@@ -23,6 +23,8 @@ docker-compose up --build
 
 # If on linux, you will not have permissions to several files.
 # You will have to run this command to change that.
+# When new files are generated from time to time they may have the incorrect permissions.
+# Run this in the root to correct that.
 sudo chown -R $USER:$USER .
 
 # Permissions issues?
