@@ -1,0 +1,3 @@
+Our VSCode could not found our python interpreter.
+So just using python inside of the virutal enviornment in this app.
+It is not being tracked on github however.
