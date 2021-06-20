@@ -14,7 +14,6 @@ docker-compose exec backend sh
 
 # use the web service:
 docker-compose exec web sh
-
 python3 manage.py migrate
 
 
