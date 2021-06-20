@@ -1,26 +1,10 @@
 version: "3.8"
-
 services:
-  db:
-    image: postgres
-    volumes:
-      - ./data/db:/var/lib/postgresql/data
-    environment:
-      - POSTGRES_DB=postgres
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
-  web:
+  backend:
     build: .
-    # python manage.py runserver, means to start our development server.
-    # 0.0.0.0 means to make it available on all network adapters, not just localhost.
-    # 8000 means to make it accessible on port 8000.
-    command: python manage.py runserver 0.0.0.0:8000
+    # This means that if we make a change to our one app, it will be mapped to our entire docker container.
     volumes:
-      - .:/code
+      - .:/projects
+    # The second one is the docker port from 0.0.0.0, the first port is our localhost port for 127.0.0.1 or localhost.
     ports:
-      - "8000:8000"
-    depends_on:
-      - db
-    # To prevent the local machine's database from conflicting with our app.
-    # ports:
-    #   - 55432:5432
+      - 8000:8000
