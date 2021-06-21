@@ -1,3 +1,11 @@
 Our VSCode could not found our python interpreter.
 So just using python inside of the virutal enviornment in this app.
 It is not being tracked on github however.
+
+The django admin is an adminsitrative tool that allows you to easily manage your database, at least 
+the models you have registered to your database.
+
+It is easy to inspect the database with it, check your models, and modify data.
+
+Note that django admin needs to have the models it will display registered with it.
+Our UserProfile model is registered with admin.py.
